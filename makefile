@@ -1,0 +1,2 @@
+build:
+	pdflatex specs.tex
