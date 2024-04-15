@@ -15,15 +15,21 @@ public class StandardElevator extends Elevator {
 
 //implement
 public boolean pickup(Passenger p) {
-
-
-
-
+	if(numPassenger < capacity) {
+		passengerList.add(p);
+		++numPassenger;
+		return true;
+	}
+	return false;
 }
 
-//implement
-public Passenger drop(Floor f) {
 
+
+//implement
+public Passenger drop(Passenger p) {
+	passengerList.remove(p);
+	--numPassenger;
+	return p;
 
 
 }

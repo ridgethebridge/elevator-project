@@ -1,30 +1,20 @@
-<<<<<<< HEAD
 // add stuff!!!!
 
 
 
-public class Elevator {
-
-
-
-
-=======
-
 public abstract class Elevator {
 
-	protected double requestpercentage;
+	protected double requestPercentage;
 	protected int capacity;
+	protected int numPassenger = 0;
 
 	public int getCapacity() {
 		return capacity;
 	}
 	public double getRequestPercentage() {
-		return requestpercentage;
+		return requestPercentage;
 	}
-	public boolean pickup(Passenger p);
+	public abstract boolean pickup(Passenger p);
 	
-	public Passenger drop(Floor f);
->>>>>>> refs/remotes/elevate/master
-
-
+	public abstract Passenger drop(Passenger p);
 }

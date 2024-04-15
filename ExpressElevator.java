@@ -1,9 +1,9 @@
 
-import java.util.PriorityQueue;
+import java.util.ArrayList;
 
 public class ExpressElevator extends Elevator {
 
-PriorityQueue<Passenger> passengerList = new PriorityQueue<Passenger>();
+ArrayList<Passenger> passengerList = new ArrayList<Passenger>();
 
 public ExpressElevator(int c, double r) {
 	capacity =c;
@@ -14,15 +14,12 @@ public ExpressElevator(int c, double r) {
 //implement
 public boolean pickup(Passenger p) {
 
-
-
+	return true;
 
 }
 
-//implement
-public Passenger drop(Floor f) {
-
-
+ public Passenger drop(Passenger p) {
+	return p;
 
 }
 
