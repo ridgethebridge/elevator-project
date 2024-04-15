@@ -5,9 +5,10 @@ public class ExpressElevator extends Elevator {
 
 ArrayList<Passenger> passengerList = new ArrayList<Passenger>();
 
-public ExpressElevator(int c, double r) {
+public ExpressElevator(int c, double r, int f) {
 	capacity =c;
 	requestPercentage = r;
+	currentFloor = f;
 }
 
 
