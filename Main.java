@@ -9,7 +9,8 @@ public class Main extends Application {
 
 
 public void start(Stage stage) {
-	Building b = new Building(20,800,800);
+
+	Building b = new Building(s.numOfFloors,800,800,s.numStandard,s.numExpress);
 	ElevatorPane p = new ElevatorPane(b);
 	stage.setScene(new Scene(p,700,700));
 	stage.show();
