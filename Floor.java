@@ -1,10 +1,65 @@
 
 import java.util.ArrayList;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
 
 public class Floor {
 
-	private ArrayList<Elevator> currentElevators = new ArrayList<Elevator>();
 
-	private ArrayList<Passenger> currentPassengers = new ArrayList<Passenger>();
+	// fields for floors graphics and passengers on floor
+	public ArrayList<Passenger> waitingQueue;
+	public ArrayList<Passenger> completedQueue;
+	public ArrayList<Elevator> elevatorList;
 
+	private int floorNum;
+	private Rectangle floorFigure;
+
+	public Floor(int n) {
+	floorNum = n;
+	waitingQueue = new ArrayList<Passenger>();
+	 completedQueue = new ArrayList<Passenger>();
+	 elevatorList = new ArrayList<Elevator>();
+	}
+
+	// method for checking for 2 equal floors
+	@Override
+	public boolean equals(Object o) {
+		return floorNum == ((Floor)o).floorNum;
+	}
+
+	// sets floors graphics
+	public void setFigure(double x, double y, double l, double w) {
+	
+		floorFigure = new Rectangle(x,y,l,w);
+		floorFigure.setStroke(Color.BLACK);
+		floorFigure.setFill(Color.WHITE);
+	}
+
+	public Rectangle getFigure() {
+		return floorFigure;
+	}
+
+	public int getFloorNum() {
+		return floorNum;
+	}
+
+	// sets color of rectangle graphic, blue for standard elevator, red for express, purple for both
+	public void setColor() {
+		int n = 0;
+		for(int i = 0; i < elevatorList.size(); ++i) {
+			if(elevatorList.get(i) instanceof StandardElevator) { 
+				++n;
+			}
+			else if( elevatorList.get(i) instanceof ExpressElevator && n > 0) {
+			floorFigure.setFill(Color.PURPLE);
+			return;
+			}
+		}
+
+			switch(n) {
+				case 0 -> floorFigure.setFill(Color.RED);
+				default -> floorFigure.setFill(Color.BLUE);
+			}
+		}
 }
+
