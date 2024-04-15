@@ -14,10 +14,16 @@ public ExpressElevator(int c, double r, int f) {
 
 //implement
 public boolean pickup(Passenger p) {
-
+	if(numPassenger < capacity) {
+	passengerList.add(p);
+	++numPassenger;	
 	return true;
 
 }
+
+return false;
+}
+
 
  public Passenger drop(Passenger p) {
 	return p;
