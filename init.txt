@@ -1,0 +1,17 @@
+
+# building parameters
+floors 30
+
+# elevator types
+elevator StandardElevator 10 60 4
+elevator ExpressElevator 8 40 4
+
+
+#request percentage
+rp Patient 70
+rp Staff 30
+
+
+# run simulation
+run_simulation 60
+
