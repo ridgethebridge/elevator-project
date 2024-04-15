@@ -1,12 +1,24 @@
+
+# just to practice makefiles
+
 CA=compileall
 prog=Main
 RA=runall
+JC=javac
+J=java
 
 pdf:
 	pdflatex specs.tex
 
-%.c: %.java
+%.fx: %.java
 	 $(CA) $^
+
+%.c: %.java
+	$(JC) $^
+
+%.r: %.class
+	$(J) $^
+
 
 run: $(prog).class
 
