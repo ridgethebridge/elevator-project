@@ -1,17 +1,20 @@
 
 import java.util.LinkedList;
+import java.util.ArrayList;
 public class Building {
 
 	// fields
-	private LinkedList<Floor> floors;
-	private ArrayList<Elevator> elevators; 
+public LinkedList<Floor> floors;
+	private ArrayList<StandardElevator> standardElevators; 
+	private ArrayList<ExpressElevator> expressElevators; 
 	private int floorNum;
 	private int width, height;
 
-	public Building(int n,int w, int h int sn, int en) {
+	public Building(int n,int w, int h, int sn, int en) {
 		floors = new LinkedList<Floor>();
-		elevators = new ArrayList<Elevator>();
-
+		standardElevators = new ArrayList<StandardElevator>();
+		expressElevators = new ArrayList<ExpressElevator>();
+	
 		floorNum = n;
 		double fw = w/n;
 		double fh = h/n;
@@ -26,9 +29,9 @@ public class Building {
 		int l = sn > en ? sn:en;
 		for(int i = 0; i < l; ++i) {
 			if(i < sn)
-				elevators.add(new StandardElevator());
+				standardElevators.add(new StandardElevator(40,10,1));
 			if(i < en)
-				elevators.add(new ExpressElevator());
+				expressElevators.add(new ExpressElevator(20,10,1));
 		}
 
 	width = w;
