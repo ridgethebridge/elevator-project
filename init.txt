@@ -15,3 +15,7 @@ rp Staff 30
 # run simulation
 run_simulation 60
 
+#number of passengers
+num_passenger Patient 20
+num_passenger Staff 10
+
