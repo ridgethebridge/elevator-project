@@ -21,6 +21,9 @@ public class Settings {
 
 	public int numFloors;
 
+	public int numPatient;
+	public int numStaff;
+
 	// initializes all settings after parsing file, using BufferedReader cause its faster
 	public Settings(String file) {
 
@@ -64,7 +67,15 @@ BufferedReader reader = new BufferedReader(new FileReader(file));
 		}
 		else if(arr[0].equals("run_simulation"))
 			numIterations = Integer.parseInt(arr[1]);
+		
+		else if(arr[0].equals("num_passenger")) {
+			if(arr[1].equals("Patient"))
+				numPatient = Integer.parseInt(arr[2]);
+			else if(arr[1].equals("Staff"))
+				numStaff = Integer.parseInt(arr[2]);
 		}
+	
+	}
 	}
 reader.close();
 }
@@ -74,7 +85,5 @@ catch(IOException e) {
 
 
 	}
-
-
 
 }
