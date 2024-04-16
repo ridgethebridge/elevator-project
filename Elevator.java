@@ -5,7 +5,7 @@ public abstract class Elevator {
 	protected double requestPercentage;
 	protected int capacity;
 	protected int numPassenger = 0;
-	protected int currentFloor;
+	protected Floor currentFloor;
 
 	public int getCapacity() {
 		return capacity;
