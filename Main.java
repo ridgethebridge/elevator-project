@@ -1,5 +1,5 @@
 
-/* try adding settings to building so building can get info
+/*
  * put elevators in building, in a list
  * traverse the elevators thorugh the linkedlist of floors
  * express should take all staff before taking patients on floor
@@ -15,8 +15,9 @@ public class Main extends Application {
 
 
 public void start(Stage stage) {
+	Settings s = new Settings("init.txt");
 
-	Building b = new Building(20,800,800,10,10);
+	Building b = new Building(s.numFloors,600,600,s.numStandard,s.numExpress,s.patientRP,s.staffRP,s.numPatient,s.numStaff,s.standardCapacity,s.expressCapacity);
 	ElevatorPane p = new ElevatorPane(b);
 	stage.setScene(new Scene(p,700,700));
 	stage.show();
