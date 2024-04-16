@@ -2,8 +2,6 @@
 
 import java.util.LinkedList;
 import java.util.ArrayList;
-/* put some methods to initialize passengers in floors, and elevators in floors, then cook 
- */
 
 
 public class Building {
@@ -23,17 +21,19 @@ public LinkedList<Floor> floors;
 		// puts floors in building
 		for(int i = 0; i < n; ++i) {
 			Floor temp = new Floor(i+1);
-			temp.setFigure(0,h-(i*fh),fw,fh);
+			temp.setFigure(0,h-(i*fh),w,fh);
 			floors.add(temp);
 		}
 
-		// adds patients and staff to floor
+		// adds patients and staff to first n floors
 		addPatient(nP,pRP);
+
 		addStaff(nS,sRP);
 
-		//addStandard(stRP,sC);
+		//adds elevators to first n floors
+		addStandard(sn,stRP,sC);
 
-		//addExpress(eRP,eC);
+		addExpress(en,eRP,eC);
 
 	width = w;
 	height = h;
@@ -68,6 +68,22 @@ public LinkedList<Floor> floors;
 			}
 		}
 
+
+	// elevator add methods
+	private void addStandard(int num, double rp, int c) {
+
+		for(int i = 0; i < num; ++i) {
+			Elevator s = new StandardElevator(rp,c,floors.get(i));
+			floors.get(i).elevatorList.add(s);
+		}
+	}
+
+	private void addExpress(int num, double rp, int c) {
+	for(int i = 0; i < num; ++i) {
+			Elevator e = new ExpressElevator(rp,c,floors.get(i));
+			floors.get(i).elevatorList.add(e);
+		}
+	}
 
 		}
 	
