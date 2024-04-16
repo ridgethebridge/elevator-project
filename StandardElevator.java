@@ -6,7 +6,7 @@ public class StandardElevator extends Elevator {
 
 	private ArrayList<Passenger> passengerList = new ArrayList<Passenger>();
 
-	public StandardElevator(double requests, int capacity, int f) {
+	public StandardElevator(double requests, int capacity, Floor f) {
 		this.capacity = capacity;
 		requestPercentage = requests;
 		currentFloor = f;
