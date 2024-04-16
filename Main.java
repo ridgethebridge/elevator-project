@@ -1,9 +1,10 @@
 
 /*
- * put elevators in building, in a list
+ * 
  * traverse the elevators thorugh the linkedlist of floors
  * express should take all staff before taking patients on floor
  * elevator, passengers, floors, all initilized in building or maybe in Main with multiple params specifying building constructor
+ * implement direction and movement, but how????!!!!
  */
 
 import javafx.application.Application;
@@ -17,9 +18,11 @@ public class Main extends Application {
 public void start(Stage stage) {
 	Settings s = new Settings("init.txt");
 
-	Building b = new Building(s.numFloors,1600,600,s.numStandard,s.numExpress,s.patientRP,s.staffRP,s.numPatient,s.numStaff,s.standardCapacity,s.expressCapacity,s.standardRP,s.expressRP);
+	// using const of 300, good width 600 also decent
+	Building b = new Building(s.numFloors,300,600,s.numStandard,s.numExpress,s.patientRP,s.staffRP,s.numPatient,s.numStaff,s.standardCapacity,s.expressCapacity,s.standardRP,s.expressRP);
 	ElevatorPane p = new ElevatorPane(b);
 	stage.setScene(new Scene(p,700,700));
+	stage.setResizable(false);
 	stage.show();
 
 }
