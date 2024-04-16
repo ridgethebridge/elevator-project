@@ -3,9 +3,13 @@ import java.util.ArrayList;
 
 public class ExpressElevator extends Elevator {
 
+	/* use currentFloor field to check floors for passengers, and go through building array */
+
 ArrayList<Passenger> passengerList = new ArrayList<Passenger>();
 
-public ExpressElevator(int c, double r, int f) {
+
+
+public ExpressElevator(double r, int c, Floor f) {
 	capacity =c;
 	requestPercentage = r;
 	currentFloor = f;
