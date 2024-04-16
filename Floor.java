@@ -43,6 +43,7 @@ public class Floor {
 		return floorNum;
 	}
 
+
 	// sets color of rectangle graphic, blue for standard elevator, red for express, purple for both
 	public void setColor() {
 		int n = 0;
