@@ -17,7 +17,7 @@ public class Main extends Application {
 public void start(Stage stage) {
 	Settings s = new Settings("init.txt");
 
-	Building b = new Building(s.numFloors,600,600,s.numStandard,s.numExpress,s.patientRP,s.staffRP,s.numPatient,s.numStaff,s.standardCapacity,s.expressCapacity);
+	Building b = new Building(s.numFloors,1600,600,s.numStandard,s.numExpress,s.patientRP,s.staffRP,s.numPatient,s.numStaff,s.standardCapacity,s.expressCapacity,s.standardRP,s.expressRP);
 	ElevatorPane p = new ElevatorPane(b);
 	stage.setScene(new Scene(p,700,700));
 	stage.show();
