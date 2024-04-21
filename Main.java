@@ -20,9 +20,9 @@ public void start(Stage stage) {
 
 	// using const of 300, good width 600 also decent
 	Building b = new Building(s.numFloors,300,600,s.numStandard,s.numExpress,s.patientRP,s.staffRP,s.numPatient,s.numStaff,s.standardCapacity,s.expressCapacity,s.standardRP,s.expressRP);
+	stage.setResizable(false);
 	ElevatorPane p = new ElevatorPane(b);
 	stage.setScene(new Scene(p,700,700));
-	stage.setResizable(false);
 	stage.show();
 
 }
