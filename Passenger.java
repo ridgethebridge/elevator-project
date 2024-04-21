@@ -17,6 +17,14 @@ public class Passenger {
 		p = requestPercentage;
 	}
 
+	public Floor getStartFloor() {
+		return startFloor;
+	}
+
+	public Floor getEndFloor() {
+		return endFloor;
+	}
+
 
 
 
