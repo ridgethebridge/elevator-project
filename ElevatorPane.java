@@ -9,6 +9,7 @@ public ElevatorPane(Building b) {
 
 
 	int num = b.getFloorNum();
+	b.floors.get(0).elevatorList.add(new StandardElevator(50.0,10,b.floors.get(0)));
 	
 	for(int i = 0; i < num; ++i) {
 		getChildren().add(b.floors.get(i).getFigure());
@@ -19,11 +20,13 @@ public ElevatorPane(Building b) {
 	timer = new AnimationTimer() {
 	
 		public void handle(long t) {
-
+		b.moveElevator();	
 		}
 
 
 	};
+
+	timer.start();
 
 
 }
