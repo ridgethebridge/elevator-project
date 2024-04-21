@@ -27,6 +27,12 @@ public class Floor {
 		return floorNum == ((Floor)o).floorNum;
 	}
 
+	// comapres floors
+	public int compare(Floor f) {
+		int result = floorNum - f.getFloorNum();
+			return result;
+	}
+
 	// sets floors graphics
 	public void setFigure(double x, double y, double l, double w) {
 	
@@ -46,6 +52,10 @@ public class Floor {
 
 	// sets color of rectangle graphic, blue for standard elevator, red for express, purple for both
 	public void setColor() {
+		if(elevatorList.isEmpty()) {
+			floorFigure.setFill(Color.WHITE);
+			return;
+		}
 		int n = 0;
 		for(int i = 0; i < elevatorList.size(); ++i) {
 			if(elevatorList.get(i) instanceof StandardElevator) { 
