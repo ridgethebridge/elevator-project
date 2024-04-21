@@ -85,9 +85,22 @@ public LinkedList<Floor> floors;
 		}
 	}
 
+	public void moveElevator() {
+
+for(int i =  0; i < floors.size()-1; ++i) {
+
+				Floor f = floors.get(i);
+
+				for(int d = 0; d <f.elevatorList.size(); ++d) {
+				       Elevator e = f.elevatorList.get(d);
+			       switch(e.direction) {
+			case UP -> e.move(floors.get(i+1));
+	 		case DOWN-> e.move(floors.get(i-1));
+			       }		
+
+	}
+
 		}
+}
 	
-
-
-
-
+	}
