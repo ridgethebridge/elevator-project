@@ -3,8 +3,8 @@
 floors 30
 
 # elevator types
-elevator StandardElevator 10 60 4
-elevator ExpressElevator 8 40 4
+elevator StandardElevator 10 60 8
+elevator ExpressElevator 8 40 8
 
 
 #request percentage
