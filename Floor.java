@@ -2,14 +2,16 @@
 import java.util.ArrayList;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
-public class Floor {
+public class Floor implements Comparable<Floor> {
 
 
 	// fields for floors graphics and passengers on floor
 	public ArrayList<Passenger> waitingQueue;
 	public ArrayList<Passenger> completedQueue;
 	public ArrayList<Elevator> elevatorList;
+	private Text text;
 
 	private int floorNum;
 	private Rectangle floorFigure;
@@ -24,19 +26,22 @@ public class Floor {
 	// method for checking for 2 equal floors
 	@Override
 	public boolean equals(Object o) {
-		return floorNum == ((Floor)o).floorNum;
+		return floorNum == ((Floor)o).getFloorNum();
 	}
 
+	@Override
 	// comapres floors
-	public int compare(Floor f) {
+	public int compareTo(Floor f) {
 		int result = floorNum - f.getFloorNum();
 			return result;
 	}
 
-	// sets floors graphics
+	// sets floors graphics binds text box
 	public void setFigure(double x, double y, double l, double w) {
 	
 		floorFigure = new Rectangle(x,y,l,w);
+		text = new Text(0,y,"passengers: " +waitingQueue.size());
+		text.xProperty().bind(floorFigure.widthProperty().add(20));
 		floorFigure.setStroke(Color.BLACK);
 		floorFigure.setFill(Color.WHITE);
 	}
@@ -72,5 +77,24 @@ public class Floor {
 				default -> floorFigure.setFill(Color.BLUE);
 			}
 		}
+
+	// changes requests based on percent for all passengers on floor
+	public void changeRequests() {
+		for( int i = 0; i < waitingQueue.size(); ++i) {
+			Passenger p = waitingQueue.get(i);
+			p.setRequest();
+		}
+	}
+
+	public void setPassengerCounter() {
+		text.setText("passengers: " + (waitingQueue.size() + completedQueue.size()));
+	}
+	
+
+	public Text getTextBox() {
+		return text;
+}
+
+
 }
 
