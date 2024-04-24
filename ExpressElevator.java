@@ -2,24 +2,50 @@
 
 public class ExpressElevator extends Elevator {
 
-	/* use currentFloor field to check floors for passengers, and go through building array */
-
-
 public ExpressElevator(double r, int c, Floor f) {
-	capacity =c;
-	requestPercentage = r;
-	currentFloor = f;
-	direction = Direction.UP;
+	super(r,c,f);
 }
 
 
-//implement
 public void pickup() {
-
-	if(numPassenger < capacity) {
+	// first looks for staff
+	for(int i = 0; i < currentFloor.waitingQueue.size(); ++i) {
+		Passenger p = currentFloor.waitingQueue.get(i);
+	if(numPassenger < capacity && p.getRequestChoice()) {
+		if(p instanceof Staff) {
+			passengerList.add(p);
+			currentFloor.waitingQueue.remove(p);
 	++numPassenger;
+	if(!firstPicked) {
+		firstPicked = true;
+		setDirection(p.getEndFloor());
+		destFloor = p.getEndFloor();
+
+	}
+		}
 
 }
+	}
+
+// now it looks for patients
+
+	for(int i = 0; i < currentFloor.waitingQueue.size(); ++i) {
+		Passenger p = currentFloor.waitingQueue.get(i);
+	if(numPassenger < capacity && p.getRequestChoice()) {
+			passengerList.add(p);
+			currentFloor.waitingQueue.remove(p);
+	++numPassenger;
+	if(!firstPicked) {
+		firstPicked = true;
+		setDirection(p.getEndFloor());
+		destFloor = p.getEndFloor();
+
+	}
+}
+	}
+
+
+
 
 }
 
