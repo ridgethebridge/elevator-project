@@ -1,10 +1,22 @@
 
 /*
  * 
- * traverse the elevators thorugh the linkedlist of floors
- * express should take all staff before taking patients on floor
- * elevator, passengers, floors, all initilized in building or maybe in Main with multiple params specifying building constructor
- * implement direction and movement, but how????!!!!
+ *
+ * IMPORTANT STUFF!!!!
+ * use requested field, and getRequestChoice method,
+ * every frame choice of each passenger changes
+ * probable done in building
+ *
+ * elevators should have dest floors based on 1st passenger
+ * if dest floor = currentFloor then next passenger takes pririoty and direction is based on dest floor relation to current floor
+ *
+ * put labels next to floor showing num of passengers on floor
+ *
+ * put large label on the right showing text stating drop offs and pick ups, then write that info to file
+ * properly switch directions
+ * add iterations
+ * then add a start button to start animation, maybe a puse button
+ * properly add passengers to floors
  */
 
 import javafx.application.Application;
