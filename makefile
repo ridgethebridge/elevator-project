@@ -24,6 +24,6 @@ run: $(prog).class
 
 	$(RA) $(prog) 
 
-clean:
+clean: 
 	del *.class 
 
