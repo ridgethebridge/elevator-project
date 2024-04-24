@@ -55,52 +55,68 @@ public LinkedList<Floor> floors;
 	private void addPatient(int num, double percent) {
 
 		for(int i = 0; i < num; ++i) {
-				Passenger p = new Patient(floors.get(i),floors.get((int)(Math.random()*floors.size())),percent);
-			floors.get(i).waitingQueue.add(p);
+			int start = (int)(Math.random()*floors.size());
+			int end = (int)(Math.random()*floors.size());
+
+				Passenger p = new Patient(floors.get(start),floors.get(end),percent);
+			floors.get(start).waitingQueue.add(p);
 			}
 		}
 
 	private void addStaff(int num, double percent) {
 
+
+			int start = (int)(Math.random()*floors.size());
+			int end = (int)(Math.random()*floors.size());
 		for(int i = 0; i < num; ++i) {
-				Passenger p = new Staff(floors.get(i),floors.get((int)(Math.random()*floors.size())),percent);
-			floors.get(i).waitingQueue.add(p);
+				Passenger p = new Staff(floors.get(start),floors.get(end),percent);
+			floors.get(start).waitingQueue.add(p);
 			}
 		}
 
 
-	// elevator add methods
+	// elevator add methods now added to random floors
 	private void addStandard(int num, double rp, int c) {
 
 		for(int i = 0; i < num; ++i) {
-			Elevator s = new StandardElevator(rp,c,floors.get(i));
-			floors.get(i).elevatorList.add(s);
+			int f = (int)(Math.random()*floors.size());
+			Elevator s = new StandardElevator(rp,c,floors.get(f));
 		}
 	}
 
 	private void addExpress(int num, double rp, int c) {
 	for(int i = 0; i < num; ++i) {
-			Elevator e = new ExpressElevator(rp,c,floors.get(i));
-			floors.get(i).elevatorList.add(e);
+			int f = (int)(Math.random()*floors.size());
+			Elevator e = new ExpressElevator(rp,c,floors.get(f));
 		}
 	}
 
+	// moves elevators from floor to floor
 	public void moveElevator() {
 
 for(int i =  0; i < floors.size()-1; ++i) {
 
 				Floor f = floors.get(i);
+				if(f.elevatorList.isEmpty())
+						continue;
 
 				for(int d = 0; d <f.elevatorList.size(); ++d) {
 				       Elevator e = f.elevatorList.get(d);
 			       switch(e.direction) {
 			case UP -> e.move(floors.get(i+1));
-	 		case DOWN-> e.move(floors.get(i-1));
+	 		case DOWN-> {if( i > 0) e.move(floors.get(i-1));}
 			       }		
-
 	}
 
 		}
+}
+
+
+//changes requests for all passengers on floor
+public void changeBuildingRequests() {
+	for(int i =0; i < floors.size(); ++i) {
+		floors.get(i).changeRequests();
+	}
 }
 	
 	}
