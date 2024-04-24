@@ -12,7 +12,7 @@ public ElevatorPane(Building b) {
 	b.floors.get(0).elevatorList.add(new StandardElevator(50.0,10,b.floors.get(0)));
 	
 	for(int i = 0; i < num; ++i) {
-		getChildren().add(b.floors.get(i).getFigure());
+		getChildren().addAll(b.floors.get(i).getFigure(),b.floors.get(i).getTextBox());
 
 	}
 		// anon class for animation
@@ -20,7 +20,10 @@ public ElevatorPane(Building b) {
 	timer = new AnimationTimer() {
 	
 		public void handle(long t) {
+			if((int)(Math.random()*20) == 19) {
+			b.changeBuildingRequests();
 		b.moveElevator();	
+			}
 		}
 
 
