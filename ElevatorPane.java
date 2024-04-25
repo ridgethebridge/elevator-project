@@ -1,20 +1,27 @@
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.TextArea;
 public class ElevatorPane extends Pane {
 
 	AnimationTimer timer;
+	TextArea wordArea;
 public ElevatorPane(Building b) {
 
-
+wordArea = b.text;
 
 	int num = b.getFloorNum();
-	b.floors.get(0).elevatorList.add(new StandardElevator(50.0,10,b.floors.get(0)));
 	
 	for(int i = 0; i < num; ++i) {
 		getChildren().addAll(b.floors.get(i).getFigure(),b.floors.get(i).getTextBox());
 
 	}
+	getChildren().add(wordArea);
+	wordArea.setTranslateX(wordArea.getTranslateX() + 500);
+	wordArea.setTranslateY(wordArea.getTranslateY() + 400);
+	wordArea.setPrefWidth(200);
+
+
 		// anon class for animation
 
 	timer = new AnimationTimer() {
