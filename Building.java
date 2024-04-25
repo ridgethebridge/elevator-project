@@ -53,10 +53,12 @@ public LinkedList<Floor> floors;
 
 	// methods to add patients and staff to floors
 	private void addPatient(int num, double percent) {
+		int start, end;
 
 		for(int i = 0; i < num; ++i) {
-			int start = (int)(Math.random()*floors.size());
-			int end = (int)(Math.random()*floors.size());
+			 while((start = (int)(Math.random()*floors.size())) == (end = (int)(Math.random()*floors.size()))) {
+
+			 }
 
 				Passenger p = new Patient(floors.get(start),floors.get(end),percent);
 			floors.get(start).waitingQueue.add(p);
@@ -66,9 +68,10 @@ public LinkedList<Floor> floors;
 	private void addStaff(int num, double percent) {
 
 
-			int start = (int)(Math.random()*floors.size());
-			int end = (int)(Math.random()*floors.size());
+		int start, end;
 		for(int i = 0; i < num; ++i) {
+			 while((start = (int)(Math.random()*floors.size())) == (end = (int)(Math.random()*floors.size()))) {
+			 }
 				Passenger p = new Staff(floors.get(start),floors.get(end),percent);
 			floors.get(start).waitingQueue.add(p);
 			}
@@ -94,7 +97,7 @@ public LinkedList<Floor> floors;
 	// moves elevators from floor to floor
 	public void moveElevator() {
 
-for(int i =  0; i < floors.size()-1; ++i) {
+for(int i =  0; i < floors.size(); ++i) {
 
 				Floor f = floors.get(i);
 				if(f.elevatorList.isEmpty())
@@ -103,20 +106,27 @@ for(int i =  0; i < floors.size()-1; ++i) {
 				for(int d = 0; d <f.elevatorList.size(); ++d) {
 				       Elevator e = f.elevatorList.get(d);
 			       switch(e.direction) {
-			case UP -> e.move(floors.get(i+1));
-	 		case DOWN-> {if( i > 0) e.move(floors.get(i-1));}
+			case UP -> { 
+				if(i < floors.size()-1)
+				       	e.move(floors.get(i+1));
+				else e.setDirection(floors.get(0));
+			}
+	 		case DOWN-> {
+				if( i > 0)
+			       		e.move(floors.get(i-1));
+				else
+					e.setDirection(floors.get(1));
+
 			       }		
 	}
 
 		}
+		floors.get(i).changeRequests();
 }
+	}
 
 
 //changes requests for all passengers on floor
-public void changeBuildingRequests() {
-	for(int i =0; i < floors.size(); ++i) {
-		floors.get(i).changeRequests();
-	}
-}
+
 	
 	}
