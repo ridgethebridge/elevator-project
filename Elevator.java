@@ -1,6 +1,7 @@
 
 
 import java.util.ArrayList;
+import javafx.scene.control.TextArea;
 public abstract class Elevator {
 
 	protected double requestPercentage;
@@ -31,29 +32,30 @@ capacity = c;
 	public double getRequestPercentage() {
 		return requestPercentage;
 	}
-	public abstract void pickup();
+	public abstract void pickup(TextArea a);
 	
-	public void drop() {
+	public void drop(TextArea a) {
 		for(int i = 0; i < passengerList.size(); ++i) {
 			Passenger p = passengerList.get(i);
 		if(p.getEndFloor().equals(currentFloor)) {
 			currentFloor.completedQueue.add(p);
 			passengerList.remove(p);
 			--numPassenger;
+			a.setText(a.getText() + p + "was dropped on " + currentFloor + " by " + this + "\n");
 }
 		}
 
 
 }
 
-	public void move(Floor newFloor) {
+	public void move(Floor newFloor, TextArea a) {
 	newFloor.elevatorList.add(this);
 	newFloor.setColor();
 	currentFloor.elevatorList.remove(this);
 	currentFloor.setColor();
 	currentFloor = newFloor;
-	drop();
-	pickup();
+	drop(a);
+	pickup(a);
 	currentFloor.setPassengerCounter();
 	resetFirstPicked();
 	}
@@ -63,7 +65,7 @@ public void resetFirstPicked() {
 	if (destFloor != null && currentFloor.equals(destFloor)) {
 		if(!passengerList.isEmpty()) {
 		destFloor = passengerList.get(0).getEndFloor();
-		setDirection(passengerList.get(0).getEndFloor());
+		setDirection(destFloor);
 		}
 		else {
 			firstPicked = false;
