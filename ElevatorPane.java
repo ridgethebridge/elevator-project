@@ -17,9 +17,10 @@ wordArea = b.text;
 
 	}
 	getChildren().add(wordArea);
-	wordArea.setTranslateX(wordArea.getTranslateX() + 500);
-	wordArea.setTranslateY(wordArea.getTranslateY() + 400);
+	wordArea.setTranslateX(wordArea.getTranslateX() + 470);
+	wordArea.setTranslateY(wordArea.getTranslateY() + 100);
 	wordArea.setPrefWidth(200);
+	wordArea.setPrefHeight(500);
 
 
 		// anon class for animation
