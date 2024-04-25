@@ -5,7 +5,7 @@ public abstract class Elevator {
 
 	protected double requestPercentage;
 	protected int capacity;
-	protected int numPassenger = 0;
+	protected int numPassenger;
 	protected Floor currentFloor;
 	protected Floor destFloor;
 	protected boolean firstPicked;
@@ -15,6 +15,7 @@ protected ArrayList<Passenger> passengerList = new ArrayList<Passenger>();
 
 public Elevator( double r, int c, Floor f) {
 
+	numPassenger = 0;
 capacity = c;
 		requestPercentage = r;
 		currentFloor = f;
@@ -55,12 +56,14 @@ capacity = c;
 	pickup();
 	currentFloor.setPassengerCounter();
 	resetFirstPicked();
-}
+	}
+
 
 public void resetFirstPicked() {
 	if (destFloor != null && currentFloor.equals(destFloor)) {
 		if(!passengerList.isEmpty()) {
 		destFloor = passengerList.get(0).getEndFloor();
+		setDirection(passengerList.get(0).getEndFloor());
 		}
 		else {
 			firstPicked = false;
@@ -73,3 +76,4 @@ public void setDirection(Floor f) {
 		direction  = currentFloor.compareTo(f) > 0 ? Direction.DOWN: Direction.UP;
 }
 }
+
