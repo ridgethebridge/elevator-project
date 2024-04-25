@@ -1,4 +1,5 @@
 
+import javafx.scene.control.TextArea;
 
 public class StandardElevator extends Elevator {
 
@@ -7,9 +8,13 @@ public class StandardElevator extends Elevator {
 	}
 
 
+	@Override
+	public String toString() {
+		return "standard elevator";
+	}
 
 //implement
-public void pickup() {
+public void pickup(TextArea a) {
 
 	for(int i = 0; i < currentFloor.waitingQueue.size(); ++i) {
 		Passenger p = currentFloor.waitingQueue.get(i);
@@ -17,6 +22,7 @@ public void pickup() {
 		if((currentFloor.compareTo(p.getEndFloor()) > 0 && direction == Direction.DOWN) || (currentFloor.compareTo(p.getEndFloor())<0 && direction == Direction.UP)) {
 			passengerList.add(p);
 		currentFloor.waitingQueue.remove(p);
+			a.setText(a.getText() + p + " was picked up by " + this + " on " + currentFloor + "\n");
 		
 		++numPassenger;
 		if(!firstPicked) {
@@ -30,6 +36,7 @@ public void pickup() {
 }
 
 }
+
 
 
 }
