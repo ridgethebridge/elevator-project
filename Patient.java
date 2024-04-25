@@ -6,5 +6,9 @@ public class Patient extends Passenger {
 		super(s,e,p);
 	}
 
+	@Override
+	public String toString() {
+		return "patient ";
+	}
 
 }
