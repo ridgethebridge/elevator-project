@@ -2,6 +2,7 @@
 
 import java.util.LinkedList;
 import java.util.ArrayList;
+import javafx.scene.control.TextArea;
 
 
 public class Building {
@@ -11,9 +12,11 @@ public LinkedList<Floor> floors;
 	private int floorNum;
 	public Settings s;
 	private int width, height;
+	public TextArea text;
 
 	public Building(int n,int w, int h, int sn, int en, double pRP, double sRP, int nP, int nS,int sC, int eC,double stRP,double eRP ) {
 		floors = new LinkedList<Floor>();
+		text = new TextArea("");
 	
 		floorNum = n;
 		double fw = w/n;
@@ -108,12 +111,12 @@ for(int i =  0; i < floors.size(); ++i) {
 			       switch(e.direction) {
 			case UP -> { 
 				if(i < floors.size()-1)
-				       	e.move(floors.get(i+1));
+				       	e.move(floors.get(i+1),text);
 				else e.setDirection(floors.get(0));
 			}
 	 		case DOWN-> {
 				if( i > 0)
-			       		e.move(floors.get(i-1));
+			       		e.move(floors.get(i-1),text);
 				else
 					e.setDirection(floors.get(1));
 
