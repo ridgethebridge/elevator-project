@@ -40,7 +40,7 @@ public class Floor implements Comparable<Floor> {
 	public void setFigure(double x, double y, double l, double w) {
 	
 		floorFigure = new Rectangle(x,y,l,w);
-		text = new Text(0,y,"passengers: " +waitingQueue.size());
+		text = new Text(0,y + 20,"passengers: " +waitingQueue.size());
 		text.xProperty().bind(floorFigure.widthProperty().add(20));
 		floorFigure.setStroke(Color.BLACK);
 		floorFigure.setFill(Color.WHITE);
@@ -87,7 +87,7 @@ public class Floor implements Comparable<Floor> {
 	}
 
 	public void setPassengerCounter() {
-		text.setText("passengers: " + (waitingQueue.size() + completedQueue.size()));
+		text.setText("waiting: " + waitingQueue.size() + " completed: " + completedQueue.size());
 	}
 	
 
