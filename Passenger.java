@@ -16,7 +16,7 @@ public class Passenger {
 	public Passenger(Floor s, Floor e, double p) {
 		startFloor = s;
 		endFloor = e;
-		p = requestPercentage;
+		requestPercentage= p;
 		setRequest();
 	}
 
@@ -29,7 +29,7 @@ public class Passenger {
 	}
 
 	public void setRequest() {
-		requested = ((int)(Math.random() * requestPercentage) > 15);
+		requested = (((int)(Math.random() * requestPercentage)) > 15);
 	}
 
 	public boolean getRequestChoice() {
