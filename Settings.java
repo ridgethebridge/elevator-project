@@ -36,7 +36,6 @@ BufferedReader reader = new BufferedReader(new FileReader(file));
 		reader.reset();
 		String line = reader.readLine();
 			reader.mark(25);
-		System.out.println(line);
 		if(line.startsWith("#"))
 				continue;
 				
