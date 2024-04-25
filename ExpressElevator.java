@@ -12,6 +12,7 @@ public void pickup() {
 	for(int i = 0; i < currentFloor.waitingQueue.size(); ++i) {
 		Passenger p = currentFloor.waitingQueue.get(i);
 	if(numPassenger < capacity && p.getRequestChoice()) {
+		if((currentFloor.compareTo(p.getEndFloor()) > 0 && direction == Direction.DOWN) || (currentFloor.compareTo(p.getEndFloor())<0 && direction == Direction.UP)) {
 		if(p instanceof Staff) {
 			passengerList.add(p);
 			currentFloor.waitingQueue.remove(p);
@@ -26,12 +27,14 @@ public void pickup() {
 
 }
 	}
+	}
 
 // now it looks for patients
 
 	for(int i = 0; i < currentFloor.waitingQueue.size(); ++i) {
 		Passenger p = currentFloor.waitingQueue.get(i);
 	if(numPassenger < capacity && p.getRequestChoice()) {
+		if((currentFloor.compareTo(p.getEndFloor()) > 0 && direction == Direction.DOWN) || (currentFloor.compareTo(p.getEndFloor())<0 && direction == Direction.UP)) {
 			passengerList.add(p);
 			currentFloor.waitingQueue.remove(p);
 	++numPassenger;
@@ -44,6 +47,7 @@ public void pickup() {
 }
 	}
 
+	}
 
 
 
