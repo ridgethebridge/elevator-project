@@ -20,8 +20,7 @@ public ElevatorPane(Building b) {
 	timer = new AnimationTimer() {
 	
 		public void handle(long t) {
-			if((int)(Math.random()*20) == 19) {
-			b.changeBuildingRequests();
+			if((int)(Math.random()*10) == 9) {
 		b.moveElevator();	
 			}
 		}
