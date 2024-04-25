@@ -35,6 +35,7 @@ public void start(Stage stage) {
 	stage.setResizable(false);
 	ElevatorPane p = new ElevatorPane(b);
 	stage.setScene(new Scene(p,700,700));
+	stage.setTitle("elevator simulator");
 	stage.show();
 
 }
