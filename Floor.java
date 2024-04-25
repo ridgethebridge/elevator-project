@@ -95,6 +95,11 @@ public class Floor implements Comparable<Floor> {
 		return text;
 }
 
+@Override
+public String toString() {
+	return "floor " + floorNum;
+}
+
 
 }
 
